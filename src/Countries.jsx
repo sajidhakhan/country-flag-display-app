@@ -19,7 +19,7 @@ import styles from './Countries.module.css';
 
             try {
                 const response = await fetch(apiUrl);
-                
+
                 if(!response.ok){
                     throw new Error(`Api request failed with status ${response.status}`)
                 }
@@ -41,7 +41,7 @@ import styles from './Countries.module.css';
   return (
     <>
         {isLoading && <p>Loading countries...</p>}
-        {error && <p>Error fetching countries</p>}
+        {error && <p>Error: {error.message}</p>}
        <div className={styles.wrapper} >
             {countries.map((country) => (             
                     <div className={styles.countryCard} key={country.cca3}>

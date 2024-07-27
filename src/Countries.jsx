@@ -19,11 +19,14 @@ import styles from './Countries.module.css';
 
             try {
                 const response = await fetch(apiUrl);
+                
                 if(!response.ok){
                     throw new Error(`Api request failed with status ${response.status}`)
                 }
-            const data = await response.json();
+                const data = await response.json();
+
             setCountries(data);
+
             } catch (error) {
                 setIsError(error);
                 console.error('Error fetching in countries:', error);
@@ -34,12 +37,6 @@ import styles from './Countries.module.css';
         fetchData();
     },[]);
   
-    console.log(countries);
-    useEffect(() => {
-        if (countries.length > 0) {
-          console.log('First few countries:', countries.slice(0, 5));
-        }
-      }, [countries]);
 
   return (
     <>

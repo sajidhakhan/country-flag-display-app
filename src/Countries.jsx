@@ -43,7 +43,7 @@ import styles from './Countries.module.css';
         {isLoading && <p>Loading countries...</p>}
         {error && <p>Error: {error.message}</p>}
        <div className={styles.wrapper} >
-            {countries.map((country) => (             
+            {!isLoading && !error && countries.map((country) => (             
                     <div className={styles.countryCard} key={country.cca3}>
                         <img src={country.flags.png} alt={country.name.common} />
                         <h2>{country.name.common}</h2>

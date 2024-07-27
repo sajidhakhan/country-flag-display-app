@@ -15,16 +15,13 @@ function Countries() {
 
             try {
                 const response = await fetch(apiUrl);
-
                 if (!response.ok) {
                     throw new Error(`API request failed with status: ${response.status}`);
                 }
                 const data = await response.json();
-
                 setCountries(data);
             } catch (error) {
                 setIsError(error);
-                console.error('Error fetching countries:', error);
             } finally {
                 setIsLoading(false);
             }
@@ -39,7 +36,7 @@ function Countries() {
             <div className={styles.wrapper}>
                 {!isLoading && !error && countries.map((country) => (
                     <div className={styles.countryCard} key={country.cca3}>
-                        <img src={country.flags.png} alt={country.name.common} />
+                        <img src={country.flags.png} alt={`${country.name.common} flag`} />
                         <h2>{country.name.common}</h2>
                     </div>
                 ))}

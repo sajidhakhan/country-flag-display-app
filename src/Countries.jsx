@@ -3,7 +3,7 @@ import styles from './Countries.module.css';
 
  function Countries() {
   
-    const apiUrl = "https://restcountries.com/v3.1/al";
+    const apiUrl = "https://restcountries.com/v3.1/all";
   
     const [countries, setCountries] = useState ([]);
 

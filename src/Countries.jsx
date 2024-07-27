@@ -3,29 +3,29 @@ import styles from './Countries.module.css';
 
  function Countries() {
   
-    const apiUrl = "https://restcountries.com/v3.1/all";
+    const apiUrl = "https://restcountries.com/v3.1/al";
   
     const [countries, setCountries] = useState ([]);
 
-    const [isLoading,setIsLoading] = useState ([]);
+    const [isLoading,setIsLoading] = useState ([false]);
 
-    const [error, setIsError] = useState ([]);
+    const [error, setIsError] = useState ([null]);
 
 
     useEffect(()=>{
         const fetchData = async () => {
             setIsLoading(true);
             setIsError(null);
-
+    
             try {
                 const response = await fetch(apiUrl);
 
                 if(!response.ok){
-                    throw new Error(`Api request failed with status ${response.status}`)
+                    throw new Error(`Api request failed with status: ${response.status}`)
                 }
                 const data = await response.json();
 
-            setCountries(data);
+               setCountries(data);
 
             } catch (error) {
                 setIsError(error);

@@ -17,6 +17,7 @@ function Countries() {
     return (
         <>
             <div className={styles.wrapper}>
+                
                 { countries.map((country) => (
                     <div className={styles.countryCard} key={country.cca3}>
                         <img src={country.flags.png} alt={`${country.name.common} flag`} />

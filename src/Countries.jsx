@@ -2,19 +2,17 @@ import React, { useEffect, useState } from 'react';
 import styles from './Countries.module.css';
 
 function Countries() {
-
-    const apiUrl = "https://restcountries.com/v3.1/all";
-
+    
     const [countries, setCountries] = useState([]);
     
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        fetch(apiUrl)
-            .then((response) => response.json())
-            .then((data) => setCountries(data))
-            .catch((error) => console.error('Error fetching data: ', error));
-    }, []);
+        fetch('https://restcountries.com/v3.1/all')
+          .then((response) => response.json())
+          .then((data) => setCountries(data))
+          .catch((error) => console.error('Error fetching data: ', error));
+      }, []);
 
     const filteredCountries = countries.filter((country) =>
         country.name.common.toLowerCase().includes(searchTerm.toLowerCase())

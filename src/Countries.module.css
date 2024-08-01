@@ -1,5 +1,19 @@
 .wrapper{
     height: 100vh;
+
+}
+.headerStyle {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backgroundColor: #f8f8f8;
+    padding: 10px;
+    boxShadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    
+}
+
+.countryContainer{
     display: flex;
     justify-content: center;
     align-items: center;

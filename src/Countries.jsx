@@ -2,21 +2,29 @@ import React, { useEffect, useState } from 'react';
 import styles from './Countries.module.css';
 
 function Countries() {
-    
-    const [countries, setCountries] = useState([]);
-    
-    const [searchTerm, setSearchTerm] = useState('');
 
-    useEffect(() => {
-        fetch('https://restcountries.com/v3.1/all')
-          .then((response) => response.json())
-          .then((data) => setCountries(data))
-          .catch((error) => console.error('Error fetching data: ', error));
-      }, []);
+      const [apiData, setApiData] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
-    const filteredCountries = countries.filter((country) =>
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://restcountries.com/v3.1/all");
+      const data = await response.json();
+      setApiData(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const filteredCountries = apiData
+    ? apiData.filter((country) =>
         country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      )
+    : [];
 
     return (
         <>
